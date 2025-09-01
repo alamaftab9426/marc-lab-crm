@@ -1,0 +1,43 @@
+{% extends "customerparent.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="text-center text-white">
+            Response
+        </h1>
+    </div>
+    {% if savemsg %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{savemsg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+</div>
+
+<div class="container-fluid mt-4 text-dark" style="width: 500px;">
+    <form method="post" >
+        {%csrf_token %}
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="restype" style="border: none; background-color: transparent; width:230px;">
+                <option selected>Select Response Type</option>
+                <option value="Feedback">Feedback</option>
+                <option value="Complains">Complains</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Subject</label> <br>
+            <input type="text" class="" id="subject" aria-describedby="emailHelp" name="subject" style="border: none; background-color: #66718794;">
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Response</label>
+            <textarea name="restext" id="" cols="50" rows="5" style="border: none; background-color: #66718794;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+
+{% endblock %}

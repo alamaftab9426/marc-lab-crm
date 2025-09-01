@@ -1,0 +1,42 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">  Enquiries </h1>   
+        </div>
+    </div>
+
+    <div class="row  mt-4"  >
+
+        <table class="table text-success" >
+            <thead >
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact No </th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Posted Date</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for e in data %}
+              <tr>
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.email}}</td>
+                <td>{{e.contact}}</td>
+                <td>{{e.subject}}</td>
+                <td >{{e.message}}</td>
+                <td>{{e.posted_date}}</td>
+                <td><a class="btn btn-danger" href="{% url 'Adminapp:delquery' id=e.id%}">Delete</a></td>
+              </tr>
+               {% endfor %}
+              
+            </tbody>
+          </table>
+
+    </div>
+{% endblock body %}

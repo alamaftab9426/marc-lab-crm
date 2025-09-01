@@ -1,0 +1,35 @@
+{% extends "customerparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;"> Products:</h1>   
+            
+        </div>
+    </div>
+
+    
+
+    <div class="row justify-content-evenly mt-3" >
+        {% for p in pro %}
+
+        <div class="col mt-2">
+
+            <div class="card bg-transparent" style="width: 18rem;">
+                <img src="{{ p.product_pic.url }} " class="card-img-top" alt=" {{p.product_name}}">
+                <div class="card-body " >
+                  <h5 class="card-title text-success "> {{p.product_name}} </h5>
+                  <p class="card-text text-dark"> MFG Date : {{p.mfg_date}}  </p>
+                  <p class="card-text text-dark"> EXP Date : {{p.exp_date}}  </p>
+                  <p class="card-text text-dark"> PRICE : {{p.price}}  </p>
+                  <a href="#" class="btn btn-primary">ADD TO CART</a>
+                </div>
+              </div>
+
+        </div>
+        {% endfor %}
+
+        
+
+    </div>
+
+{% endblock body %}

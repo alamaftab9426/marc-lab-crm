@@ -1,0 +1,139 @@
+{% extends "adminparent.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1 style="text-align: center;">Product Management </h1>
+    </div>
+</div>
+
+{% if msg %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="card-body pt-3">
+    <!-- Bordered Tabs -->
+    <ul class="nav nav-tabs mb-3 " style="border: none; margin-left: 370px;">
+
+        <li class="nav-item " style="background-color: transparent;">
+            <button class="nav-link text-warning" data-bs-toggle="tab" data-bs-target="#profile-overview"
+                style="background-color: transparent; border: none;  ">View Product</button>
+
+        </li>
+
+        <li class="nav-item ">
+            <button class="nav-link text-warning ms-2" data-bs-toggle="tab" data-bs-target="#profile-edit"
+                style="background-color: transparent; border:none;">Add Product</button>
+
+        </li>
+
+        <!-- <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password"
+                style="background-color: transparent;">Change
+                Password</button>
+        </li> -->
+
+    </ul>
+
+    <div class="tab-content pt-2" style="border: none;">
+
+        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+            <h5 class="text-light ">Products</h5>
+
+            <table class="table text-success">
+                <thead>
+                  <tr>
+                    <th scope="col">P_ID</th>
+                    <th scope="col">P_NAME</th>
+                    <th scope="col">MFG_DATE </th>
+                    <th scope="col">EXP_DATE</th>
+                    <th scope="col">PRICE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for e in products %}
+                  <tr>
+                    <td>{{e.pid}}</td>
+                    <td>{{e.product_name}}</td>
+                    <td>{{e.mfg_date}}</td>
+                    <td>{{e.exp_date}}</td>
+                    <td>{{e.price}}</td>
+                  </tr>
+                   {% endfor %}
+                  
+                </tbody>
+              </table>
+
+
+
+
+        </div>
+
+        <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+            <h5 class="text-light ">Add Product : </h5>
+
+            <form action="" method="post" class="form-group" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <table class="table table-borderless text-success" style="width: 500px;">
+                    <tr>
+                        <td>PRODUCT NAME:</td>
+                        <td>
+                            <input type="text" name="pname" id="pname" class="form-control text-light"
+                                style="border: none; background-color: #66718794;" required>
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <td>MFG Date:</td>
+                        <td>
+                            <input type="date" name="mfgdate" id="mfsdate" class="form-control text-light"
+                                style="border: none; cursor: default; background-color: #66718794;" required>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EXP Date:</td>
+                        <td><input type="date" name="expdate" id="expdate" class="form-control text-light"
+                                 style="border: none; background-color: #66718794;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>
+                            <input type="number" name="price" id="price" class="form-control text-light"
+                                style="border: none; background-color: #66718794;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Upload Product Picture :</td>
+                        <td>
+                            <input type="file" name="productpic" id="productpic" class="form-control text-light"
+                                style="border: none; background-color: #66718794;" required>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="ADD" name="submit" class="btn btn-success"></td>
+                    </tr>
+                </table>
+            </form>
+
+
+
+        </div>
+
+
+
+    </div><!-- End Bordered Tabs -->
+
+</div>
+
+{% endblock %}

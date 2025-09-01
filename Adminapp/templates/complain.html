@@ -1,0 +1,43 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">  Complains </h1>   
+        </div>
+    </div>
+
+    <div class="row  px-5 mt-4"  >
+
+        <table class="table text-success">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact No </th>
+                <th scope="col">Subject</th>
+                <th scope="col">Message</th>
+                <th scope="col">Posted Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+            {% for e in com %}
+              <tr>
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.email}}</td>
+                <td>{{e.contactno}}</td>
+                <td>{{e.subject}}</td>
+                <td>{{e.responsetext}}</td>
+                <td>{{e.posteddate}}</td>
+                <td><a class="btn btn-danger" href="{% url 'Adminapp:delresponse' id=e.id%}">Delete</a></td>
+              </tr>
+            {% endfor %}
+              
+            </tbody>
+          </table>
+
+    </div>
+{% endblock body %}

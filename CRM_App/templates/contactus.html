@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %} Contact {% endblock %}
+
+{% block body %}
+<div class="row bg-dark">
+    <div style="height: 150px; text-align: center;  background: url('https://images.unsplash.com/photo-1606206591513-adbfbdd7a177?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center/cover no-repeat; color: aliceblue; ">
+
+        <h1 class="roboto-slab-mainhead mt-5 text-light">CONTACT US..</h1>
+    </div>
+</div>
+{% if msg %}
+<p style="text-align: center; color: green;">{{msg}}</p>
+{% endif%}
+<div class="row">
+
+    <section class="section-bg" data-scroll-index="7">
+        <div class="overlay ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="contact-info">
+
+                            <h2 class="contact-title">Have Any Questions?</h2>
+                            <p>Lorem ipsum is a dummy text used to replace text in some areas just for the purpose of an
+                                example. It can be used in publishing and graphic design. The lorem ipsum text is
+                                usually a section of a Latin text by Cicero with words altered, added and removed to
+                                make it nonsensical.</p>
+                            <ul class="contact-info">
+                                <li>
+                                    <div class="info-left">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="info-right">
+                                        <h4>+91 9889848122</h4>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-left">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                    <div class="info-right">
+                                        <h4>marc_cure@gmail.com</h4>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-left">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-right">
+                                        <h4>1/680 Jankipuram Sector J Lucknow , INDIA</h4>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="contact-form">
+                            <!--Contact Form-->
+                            <form id='contact-form' method='POST' action="{% url 'CRM_App:ContactUs' %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" name="name" class="form-control" id="first-name"
+                                                placeholder="Enter Your Name *" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-control" id="email"
+                                                placeholder="Enter Your Email *" required="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" name="contact" class="form-control" id="contact"
+                                                placeholder="Enter Your Contact *" required="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" name="subject" class="form-control" id="subject"
+                                                placeholder="Subject *" required="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea rows="4" name="message" class="form-control" id="description"
+                                                placeholder="Enter Your Message *" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--contact button-->
+                                        <input type="submit" name="submit" class="btn-big btn btn-bg" value="SEND ">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

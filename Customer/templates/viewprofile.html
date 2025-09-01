@@ -1,0 +1,168 @@
+{% extends "customerparent.html" %}
+
+{% block body %}
+
+{% if msg %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="row">
+
+    <div class="col-sm-4">
+
+        <div class="card" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; border-radius: 20px; background-color: transparent;">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                <!-- <img src="#" alt="Profile" class="rounded-circle"> -->
+                <h2>{{User.name}}</h2>
+                <div class="social-links mt-2 ">
+                    <a href="#" class="twitter pe-2"> <i class="fa-brands fa-facebook"></i> </a>
+                    <a href="#" class="facebook pe-2"><i class="fa-brands fa-instagram"></i> </a>
+                    <a href="#" class="instagram pe-2"><i class="fa-brands fa-square-x-twitter"></i></a>
+                    <a href="#" class="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="col-sm-8"
+        style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; border-radius: 20px;">
+
+
+        <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs mb-3 " style="border: none; margin-left: 200px;">
+
+                <li class="nav-item " style="background-color: transparent;">
+                    <button class="nav-link text-dark" data-bs-toggle="tab"
+                    data-bs-target="#profile-overview" style="background-color: transparent; border: none;   ">Overview</button>
+
+                </li>
+
+                <li class="nav-item">
+                    <button class="nav-link text-dark ms-2" data-bs-toggle="tab" data-bs-target="#profile-edit"
+                    style="background-color: transparent; border:none;">Edit
+                    Profile</button>
+
+                </li>
+
+            </ul>
+
+            <div class="tab-content pt-2" style="border: none;">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                    <h5 class="text-dark ">Profile Details</h5>
+
+                    <table class="table table-borderless text-success" style="width: 500px;">
+                        <tr>
+                            <td>NAME:</td>
+                            <td><input type="text" name="name" id="name" class="form-control text-dark"
+                                    value="{{User.name}}" style="border: none; background-color: transparent;" disabled>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>E-MAIL :</td>
+                            <td><input type="email" name="email" id="contact" class="form-control text-dark"
+                                    value="{{User.email}}"
+                                    style="border: none; cursor: default; background-color: transparent;" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GENDER :</td>
+                            <td><input type="text" name="gender" id="gender" class="form-control text-dark"
+                                    value="{{User.gender}}" style="border: none; background-color: transparent;"
+                                    disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Contact No :</td>
+                            <td><input type="text" name="contact" id="contact" class="form-control text-dark"
+                                    value="{{User.contactno}}" style="border: none; background-color: transparent;"
+                                    disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ADDRESS :</td>
+                            <td>
+                                <textarea name="address" id="address" cols="30" rows="5" class="form-control text-dark"
+                                    style="border: none; background-color: transparent;"
+                                    disabled>{{User.address}}</textarea>
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                    <h5 class="text-dark ">Edit Profile</h5>
+
+                    <form action="" method="post" class="form-group">
+                        {% csrf_token %}
+
+                        <table class="table table-borderless text-success" style="width: 500px;">
+                            <tr>
+                                <td>NAME:</td>
+                                <td><input type="text" name="name" id="name" class="form-control text-dark"
+                                        value="{{User.name}}" style="border: none; background-color: #66718794;"></td>
+                            </tr>
+
+                            <tr>
+                                <td>E-MAIL :</td>
+                                <td><input type="email" name="email" id="contact" class="form-control text-dark"
+                                        value="{{User.email}}"
+                                        style="border: none; cursor: default; background-color: #66718794;" readonly>
+                                    <div id="emailHelp" class="form-text">Email Can not be changes !!.</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GENDER :</td>
+                                <td><input type="text" name="gender" id="gender" class="form-control text-dark"
+                                        value="{{User.gender}}" style="border: none; background-color: #66718794;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contact No :</td>
+                                <td><input type="text" name="contact" id="contact" class="form-control text-dark"
+                                        value="{{User.contactno}}" style="border: none; background-color: #66718794;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ADDRESS :</td>
+                                <td>
+                                    <textarea name="address" id="address" cols="30" rows="5"
+                                        class="form-control text-dark"
+                                        style="border: none; background-color: #66718794;">{{User.address}}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="SUBMIT" name="submit" class="btn btn-success"></td>
+                            </tr>
+                        </table>
+                    </form>
+
+
+
+                </div>
+
+
+
+            </div><!-- End Bordered Tabs -->
+
+        </div>
+
+
+    </div>
+
+
+
+
+    {% endblock %}

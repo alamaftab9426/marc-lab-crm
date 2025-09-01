@@ -1,0 +1,39 @@
+{% extends "customerparent.html" %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1 style="text-align:center;"> Change Password:</h1>
+
+    </div>
+</div>
+
+{% if msg %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+
+<div class="container-fluid mt-4 text-dark" style="width: 500px;">
+    <form method="post" >
+        {%csrf_token %}
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">New Password</label> <br>
+            <input type="password" id="pass" aria-describedby="emailHelp" name="pass"
+                style="border: none; background-color: #66718794;">
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Confirm Password</label> <br>
+            <input type="password" id="pass" aria-describedby="emailHelp" name="cpass"
+                style="border: none; background-color: #66718794;">
+
+        </div>
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </form>
+</div>
+
+
+{% endblock %}

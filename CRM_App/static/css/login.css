@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: #90a2d3; */
+
+background: url('https://t3.ftcdn.net/jpg/07/01/81/64/240_F_701816427_pCrh0hxI7Af0UxqnUtOuDDbGQipKHH21.jpg') center center/cover no-repeat;
+}
+
